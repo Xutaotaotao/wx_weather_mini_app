@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class='myapp'>
+  <!-- 头部 -->
+  <view class='header-content'>
+    <view class='city'>
+      <view>
+        <cover-image src='../../static/img/local.png' class='city-img'></cover-image>
+      </view>
+      <view style='light-height:22px'>
+        {{weatherData.today.city}}
+      </view>
+    </view>
+    <view class='temperature'>
+      {{weatherData.sk.temp}}℃
+    </view>
+    <view class='weather'>
+     {{weatherData.today.weather}}
+    </view>
+    <view class='dressing-advice'>
+      <view  class='dressing-advice-item' style='opacity:{{showDressingAdvice}};display:{{display}}'>
+        {{weatherData.today.dressing_advice}}
+      </view>
+      <view class='dressing-advice-item' style='opacity:{{shoExerciseAdvice}}'>
+        户外运动{{weatherData.today.exercise_index}}
+      </view>
+     </view>
+  </view>
+  <!-- 未来两天天气 -->
+  <view class='middle-content'>
+    <view class='middle-content-item'>
+      <view class='item-top'>
+        <text class='item-date'>明天</text>
+        <text class='item-temp'>{{tomorrow.temperature}}</text>
+      </view>
+      <view class='item-bottom'>
+        <text class='item-bottom-weater'>{{tomorrow.weather}}</text>
+        <cover-image src='{{tomorrowImgsrc}}' class='weather-img'></cover-image>
+      </view>
+    </view>
+    <view class='middle-content-item'>
+      <view class='item-top'>
+        <text class='item-date'>后天</text>
+        <text class='item-temp'>{{dayAfterTomorrow.temperature}}</text>
+      </view>
+      <view class='item-bottom'>
+        <text class='item-bottom-weater'>{{dayAfterTomorrow.weather}}</text>
+        <cover-image src='{{dayAfterTomorrowImgSrc}}' class='weather-img'></cover-image>
+      </view>
+    </view>
+  </view>
+  <!-- 未来七天天气 -->
+  <view class='future'>
+    <view class='future-weather'>
+      <view class='future-weather-cell' wx:for="{{futureData}}" wx:key="{{index}}">
+        <view class='future-date'>{{item.week}}</view>
+        <view style='color:#8a9baf'>{{item.date}}</view>
+        <view style='padding-top:10px;color:#384c78;height:50px;'>{{item.weather}}</view>
+        <view style='padding-top:10px'>
+          <cover-image src='{{item.weatherImg}}' class='future-weather-img'></cover-image>
+        </view>
+        <view style='padding-top:5px;color:#384c78'>{{item.hTemp}}</view>
+      </view>
+    </view>
+  </view>
+</view>
